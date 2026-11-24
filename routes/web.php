@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockMonitoringController;
 use App\Http\Controllers\StockOutController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -45,4 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/stock-outs', [StockOutController::class, 'index'])->name('stock-outs.index');
     Route::get('/stock-outs/create', [StockOutController::class, 'create'])->name('stock-outs.create');
     Route::post('/stock-outs', [StockOutController::class, 'store'])->name('stock-outs.store');
+
+    // PBI 9: Read Stok Bahan (Daftar Stok & Ketersediaan Gudang)
+    Route::get('/stocks', [StockMonitoringController::class, 'index'])->name('stocks.index');
+
+    // PBI 10: Read Stok Minimum (Bahan di Bawah Batas Minimum)
+    Route::get('/stocks/minimum', [StockMonitoringController::class, 'minimum'])->name('stocks.minimum');
 });

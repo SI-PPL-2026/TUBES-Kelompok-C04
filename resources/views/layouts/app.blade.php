@@ -38,6 +38,12 @@
                 <a class="nav-link {{ request()->routeIs('stock-outs.*') ? 'active' : '' }}" href="{{ route('stock-outs.index') }}">
                     <span class="nav-icon">↑</span><span>Bahan keluar</span>
                 </a>
+                <a class="nav-link {{ request()->routeIs('stocks.index') ? 'active' : '' }}" href="{{ route('stocks.index') }}">
+                    <span class="nav-icon">◪</span><span>Stok gudang</span>
+                </a>
+                <a class="nav-link {{ request()->routeIs('stocks.minimum') ? 'active' : '' }}" href="{{ route('stocks.minimum') }}">
+                    <span class="nav-icon">!</span><span>Stok minimum</span>
+                </a>
             </nav>
 
             <div class="nav-caption nav-caption-spaced">SISTEM</div>
