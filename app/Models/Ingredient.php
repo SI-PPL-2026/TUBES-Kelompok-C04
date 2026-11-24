@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ingredient extends Model
 {
@@ -15,6 +16,7 @@ class Ingredient extends Model
         'category',
         'unit',
         'minimum_stock',
+        'current_stock',
         'description',
     ];
 
@@ -22,6 +24,17 @@ class Ingredient extends Model
     {
         return [
             'minimum_stock' => 'decimal:2',
+            'current_stock' => 'decimal:2',
         ];
+    }
+
+    public function stockIns(): HasMany
+    {
+        return $this->hasMany(StockIn::class);
+    }
+
+    public function stockOuts(): HasMany
+    {
+        return $this->hasMany(StockOut::class);
     }
 }

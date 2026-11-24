@@ -3,9 +3,11 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\PurchaseOrderController;
+use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockOutController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PurchaseOrderController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -33,4 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase-orders/create', [PurchaseOrderController::class, 'create'])->name('purchase-orders.create');
     Route::post('/purchase-orders', [PurchaseOrderController::class, 'store'])->name('purchase-orders.store');
     Route::get('/purchase-orders/{purchaseOrder}', [PurchaseOrderController::class, 'show'])->name('purchase-orders.show');
+
+    // PBI 7: Create Bahan Masuk (Penerimaan Barang dari Supplier)
+    Route::get('/stock-ins', [StockInController::class, 'index'])->name('stock-ins.index');
+    Route::get('/stock-ins/create', [StockInController::class, 'create'])->name('stock-ins.create');
+    Route::post('/stock-ins', [StockInController::class, 'store'])->name('stock-ins.store');
+
+    // PBI 8: Create Bahan Keluar (Pengambilan Bahan oleh Outlet)
+    Route::get('/stock-outs', [StockOutController::class, 'index'])->name('stock-outs.index');
+    Route::get('/stock-outs/create', [StockOutController::class, 'create'])->name('stock-outs.create');
+    Route::post('/stock-outs', [StockOutController::class, 'store'])->name('stock-outs.store');
 });
