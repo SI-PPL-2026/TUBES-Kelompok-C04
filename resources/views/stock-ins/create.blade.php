@@ -49,9 +49,9 @@
                 <label for="ingredient_id">Bahan baku <span class="required-mark">*</span></label>
                 <select id="ingredient_id" name="ingredient_id" class="tx-select" required>
                     <option value="">-- Pilih bahan baku --</option>
-                    @foreach ($ingredients as$ingredient)
+                    @foreach ($ingredients as $ingredient)
                         <option value="{{ $ingredient->id }}" @selected((string) old('ingredient_id') === (string) $ingredient->id)>
-                            {{ $ingredient->code }} - {{$ingredient->name }} (Stok: {{ number_format((float) $ingredient->current_stock, 2, ',', '.') }} {{$ingredient->unit }})
+                            {{ $ingredient->code }} - {{ $ingredient->name }} (Stok: {{ number_format((float) $ingredient->current_stock, 2, ',', '.') }} {{ $ingredient->unit }})
                         </option>
                     @endforeach
                 </select>
@@ -62,7 +62,7 @@
                 <label for="supplier_id">Supplier</label>
                 <select id="supplier_id" name="supplier_id" class="tx-select">
                     <option value="">-- Pilih supplier (opsional) --</option>
-                    @foreach ($suppliers as$supplier)
+                    @foreach ($suppliers as $supplier)
                         <option value="{{ $supplier->id }}" @selected((string) old('supplier_id') === (string) $supplier->id)>
                             {{ $supplier->name }}
                         </option>
