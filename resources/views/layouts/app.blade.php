@@ -30,7 +30,13 @@
                     <span class="nav-icon">♧</span><span>Supplier</span>
                 </a>
                 <a class="nav-link {{ request()->routeIs('purchase-orders.*') ? 'active' : '' }}" href="{{ route('purchase-orders.index') }}">
-                    <span class="nav-icon">▤</span><span>Pesanan</span>
+                    <span class="nav-icon">◫</span><span>Pesanan</span>
+                </a>
+                <a class="nav-link {{ request()->routeIs('stock-ins.*') ? 'active' : '' }}" href="{{ route('stock-ins.index') }}">
+                    <span class="nav-icon">↓</span><span>Bahan masuk</span>
+                </a>
+                <a class="nav-link {{ request()->routeIs('stock-outs.*') ? 'active' : '' }}" href="{{ route('stock-outs.index') }}">
+                    <span class="nav-icon">↑</span><span>Bahan keluar</span>
                 </a>
             </nav>
 
@@ -41,8 +47,11 @@
             </div>
 
             <div class="sidebar-user">
-                <div class="avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</div>
-                <div class="user-details"><strong>{{ auth()->user()->name }}</strong><small>{{ auth()->user()->email }}</small></div>
+                <div class="avatar">{{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}</div>
+                <div class="user-details">
+                    <strong>{{ auth()->user()->name ?? 'Pengguna' }}</strong>
+                    <small>{{ auth()->user()->email ?? '' }}</small>
+                </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="icon-button logout-button" type="submit" aria-label="Keluar" title="Keluar">↪</button>
@@ -54,7 +63,10 @@
             <header class="topbar">
                 <button class="menu-toggle" type="button" aria-label="Buka navigasi" aria-controls="sidebar" aria-expanded="false">☰</button>
                 <div class="breadcrumb">Takar <span>/</span> @yield('breadcrumb', 'Dashboard')</div>
-                <div class="topbar-right"><span class="topbar-date">{{ now()->translatedFormat('l, d F Y') }}</span><span class="topbar-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span></div>
+                <div class="topbar-right">
+                    <span class="topbar-date">{{ now()->translatedFormat('l, d F Y') }}</span>
+                    <span class="topbar-avatar">{{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}</span>
+                </div>
             </header>
 
             <div class="content">
