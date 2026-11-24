@@ -26,7 +26,16 @@
         </div>
         <div class="table-scroll">
             <table class="data-table">
-                <thead><tr><th>Nama supplier</th><th>Kontak</th><th>Telepon</th><th>Email</th><th>Alamat</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Nama supplier</th>
+                        <th>Kontak</th>
+                        <th>Telepon</th>
+                        <th>Email</th>
+                        <th>Alamat</th>
+                        <th class="action-column">Aksi</th>
+                    </tr>
+                </thead>
                 <tbody>
                     @forelse ($suppliers as $supplier)
                         <tr>
@@ -35,9 +44,10 @@
                             <td>{{ $supplier->phone ?: '—' }}</td>
                             <td>{{ $supplier->email ?: '—' }}</td>
                             <td class="address-cell">{{ $supplier->address ?: '—' }}</td>
+                            <td class="action-column"><a class="edit-link" href="{{ route('suppliers.edit', $supplier) }}">Ubah <span>↗</span></a></td>
                         </tr>
                     @empty
-                        <tr><td colspan="5"><div class="table-empty"><span class="empty-icon">♧</span><strong>{{ $search !== '' ? 'Supplier tidak ditemukan' : 'Belum ada data supplier' }}</strong><p>{{ $search !== '' ? 'Coba kata kunci yang berbeda.' : 'Tambahkan supplier untuk mulai mengelola daftar pemasok.' }}</p>@if ($search === '')<a class="button button-secondary button-small" href="{{ route('suppliers.create') }}">Tambah supplier</a>@endif</div></td></tr>
+                        <tr><td colspan="6"><div class="table-empty"><span class="empty-icon">♧</span><strong>{{ $search !== '' ? 'Supplier tidak ditemukan' : 'Belum ada data supplier' }}</strong><p>{{ $search !== '' ? 'Coba kata kunci yang berbeda.' : 'Tambahkan supplier untuk mulai mengelola daftar pemasok.' }}</p>@if ($search === '')<a class="button button-secondary button-small" href="{{ route('suppliers.create') }}">Tambah supplier</a>@endif</div></td></tr>
                     @endforelse
                 </tbody>
             </table>
