@@ -33,16 +33,34 @@ class SupplierController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
+        Supplier::create($this->validatedData($request));
+
+        return redirect()->route('suppliers.index')->with('status', 'Supplier berhasil ditambahkan.');
+    }
+
+    public function edit(Supplier $supplier): View
+    {
+        return view('suppliers.edit', compact('supplier'));
+    }
+
+    public function update(Request $request, Supplier $supplier): RedirectResponse
+    {
+        $supplier->update($this->validatedData($request));
+
+        return redirect()->route('suppliers.index')->with('status', 'Data supplier berhasil diperbarui.');
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function validatedData(Request $request): array
+    {
+        return $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'contact_person' => ['nullable', 'string', 'max:120'],
             'phone' => ['nullable', 'string', 'max:40'],
             'email' => ['nullable', 'email', 'max:160'],
             'address' => ['nullable', 'string', 'max:1000'],
         ]);
-
-        Supplier::create($validated);
-
-        return redirect()->route('suppliers.index')->with('status', 'Supplier berhasil ditambahkan.');
     }
 }

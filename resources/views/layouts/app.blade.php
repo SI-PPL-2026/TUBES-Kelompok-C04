@@ -29,6 +29,9 @@
                 <a class="nav-link {{ request()->routeIs('suppliers.*') ? 'active' : '' }}" href="{{ route('suppliers.index') }}">
                     <span class="nav-icon">♧</span><span>Supplier</span>
                 </a>
+                <a class="nav-link {{ request()->routeIs('purchase-orders.*') ? 'active' : '' }}" href="{{ route('purchase-orders.index') }}">
+                    <span class="nav-icon">▤</span><span>Pesanan</span>
+                </a>
             </nav>
 
             <div class="nav-caption nav-caption-spaced">SISTEM</div>
