@@ -13,6 +13,7 @@ class DashboardController extends Controller
         return view('dashboard', [
             'ingredientCount' => Ingredient::count(),
             'supplierCount' => Supplier::count(),
+            'lowStockCount' => Ingredient::lowStock()->count(),
             'recentIngredients' => Ingredient::latest()->limit(5)->get(),
             'recentSuppliers' => Supplier::latest()->limit(4)->get(),
         ]);

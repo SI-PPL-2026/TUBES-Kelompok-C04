@@ -202,6 +202,28 @@ h1, h2, p { margin-top: 0; }
 .alert-success { margin-bottom: 17px; padding: 11px 14px; border: 1px solid #d5efdf; border-radius: 7px; background: #f0faf3; color: #27774c; font-size: 10px; }
 .alert-error { margin-bottom: 17px; padding: 11px 14px; border: 1px solid #f4cfd5; border-radius: 7px; background: #fdf2f4; color: #bd4051; font-size: 10px; }
 
+.heading-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.stock-stats-grid { grid-template-columns: repeat(3, 1fr); margin-bottom: 16px; }
+.icon-amber { background: #fef4e6; color: #c7771a; }
+.stat-foot-dot.amber { background: #e0912f; }
+.summary-banner-warning { border-color: #f3dfc4; background: linear-gradient(100deg, #fff 55%, #fff9f0); }
+.summary-check-warning { background: #fef1dc; color: #c7771a; font-weight: 800; }
+.filter-bar { display: flex; flex: 1; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-bar .search-form { width: min(100%, 300px); }
+.filter-select { height: 34px; padding: 0 10px; border: 1px solid #ebe9ed; border-radius: 7px; background: #fff; color: #4a4751; font: inherit; font-size: 10px; outline: none; }
+.filter-select:focus { border-color: #b7a9e7; box-shadow: 0 0 0 3px #6844d512; }
+.stock-value { font-size: 10px; font-weight: 700; }
+.stock-value-safe { color: #24784d; }
+.stock-value-low { color: #b76912; }
+.stock-value-out { color: #bf3447; }
+.flow-in { color: #298456; font-size: 9px; font-weight: 600; }
+.flow-out { color: #b85b35; font-size: 9px; font-weight: 600; }
+.deficit-value { color: #bf3447; font-size: 9px; font-weight: 700; }
+.status-badge { display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 20px; font-size: 8px; font-weight: 700; white-space: nowrap; }
+.status-badge-safe { background: #eaf7ef; color: #24784d; }
+.status-badge-low { background: #fef4e6; color: #b76912; }
+.status-badge-out { background: #fdecee; color: #bf3447; }
+
 .login-page { display: grid; min-height: 100vh; place-items: center; padding: 28px; background: #f6f5f8; }
 .login-layout { display: grid; width: min(100%, 930px); min-height: 590px; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid #eeecf0; border-radius: 16px; background: #fff; box-shadow: 0 24px 80px #30234c13; }
 .login-panel { display: flex; flex-direction: column; padding: 34px 48px 27px; }

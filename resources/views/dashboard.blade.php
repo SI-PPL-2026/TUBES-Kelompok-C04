@@ -21,10 +21,10 @@
             <div class="stat-foot"><span class="stat-foot-dot green"></span>Mitra pemasok tersimpan</div>
         </article>
         <article class="stat-card stat-card-highlight">
-            <div class="highlight-top"><span class="stat-icon icon-white">✳</span><span class="live-pill"><i></i> SISTEM AKTIF</span></div>
-            <span class="stat-label">Pengelolaan inventori</span>
-            <div class="highlight-copy">Satu tempat untuk data<br>bahan &amp; supplier.</div>
-            <a href="{{ route('ingredients.index') }}" class="text-link">Lihat inventori <span>→</span></a>
+            <div class="highlight-top"><span class="stat-icon icon-white">✳</span><span class="live-pill"><i></i> {{ $lowStockCount > 0 ? number_format($lowStockCount) . ' PERLU RESTOCK' : 'STOK AMAN' }}</span></div>
+            <span class="stat-label">Pemantauan stok gudang</span>
+            <div class="highlight-copy">{{ $lowStockCount > 0 ? number_format($lowStockCount) . ' bahan di bawah' : 'Semua bahan memenuhi' }}<br>batas minimum stok.</div>
+            <a href="{{ $lowStockCount > 0 ? route('stocks.minimum') : route('stocks.index') }}" class="text-link">{{ $lowStockCount > 0 ? 'Lihat stok minimum' : 'Pantau stok gudang' }} <span>→</span></a>
         </article>
     </section>
 
