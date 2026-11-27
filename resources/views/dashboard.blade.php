@@ -60,5 +60,4 @@
             @endif
         </article>
     </section>
-    <div class="dashboard-note"><span>✦</span><p>Catat bahan dan pemasok dengan konsisten untuk mendukung pengelolaan persediaan yang lebih efisien.</p><span class="note-credit">TAKAR INVENTORY</span></div>
 @endsection

@@ -50,6 +50,17 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index')->with('status', 'Data supplier berhasil diperbarui.');
     }
 
+    public function destroy(Supplier $supplier): RedirectResponse
+    {
+        if ($supplier->purchaseOrders()->exists()) {
+            return redirect()->route('suppliers.index')->with('error', 'Supplier tidak dapat dihapus karena masih digunakan pada pesanan pembelian.');
+        }
+
+        $supplier->delete();
+
+        return redirect()->route('suppliers.index')->with('status', 'Data supplier berhasil dihapus.');
+    }
+
     /**
      * @return array<string, mixed>
      */

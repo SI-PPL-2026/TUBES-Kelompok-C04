@@ -55,6 +55,13 @@ class InventoryManagementTest extends TestCase
         $this->get(route('suppliers.index', ['search' => 'Dina']))
             ->assertOk()
             ->assertSee('Pemasok Segar');
+
+        $supplier = \App\Models\Supplier::query()->where('name', 'Pemasok Segar')->firstOrFail();
+
+        $this->delete(route('suppliers.destroy', $supplier))
+            ->assertRedirect(route('suppliers.index'));
+
+        $this->assertDatabaseMissing('suppliers', ['id' => $supplier->id]);
     }
 
     public function test_user_can_create_and_update_ingredient_minimum_stock(): void

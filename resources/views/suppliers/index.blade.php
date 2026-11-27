@@ -44,7 +44,16 @@
                             <td>{{ $supplier->phone ?: '—' }}</td>
                             <td>{{ $supplier->email ?: '—' }}</td>
                             <td class="address-cell">{{ $supplier->address ?: '—' }}</td>
-                            <td class="action-column"><a class="edit-link" href="{{ route('suppliers.edit', $supplier) }}">Ubah <span>↗</span></a></td>
+                            <td class="action-column">
+                                <div class="action-links">
+                                    <a class="edit-link" href="{{ route('suppliers.edit', $supplier) }}">Ubah <span>↗</span></a>
+                                    <form class="inline-delete-form" method="POST" action="{{ route('suppliers.destroy', $supplier) }}" onsubmit="return confirm({{ \Illuminate\Support\Js::from('Hapus supplier ' . $supplier->name . '?') }})">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="delete-link" type="submit">Hapus</button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr><td colspan="6"><div class="table-empty"><span class="empty-icon">♧</span><strong>{{ $search !== '' ? 'Supplier tidak ditemukan' : 'Belum ada data supplier' }}</strong><p>{{ $search !== '' ? 'Coba kata kunci yang berbeda.' : 'Tambahkan supplier untuk mulai mengelola daftar pemasok.' }}</p>@if ($search === '')<a class="button button-secondary button-small" href="{{ route('suppliers.create') }}">Tambah supplier</a>@endif</div></td></tr>

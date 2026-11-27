@@ -73,6 +73,9 @@
                 @if (session('status'))
                     <div class="alert-success" role="status">{{ session('status') }}</div>
                 @endif
+                @if (session('error'))
+                    <div class="alert-error" role="alert">{{ session('error') }}</div>
+                @endif
                 @yield('content')
             </div>
         </main>
